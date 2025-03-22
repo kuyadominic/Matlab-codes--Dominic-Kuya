@@ -2,10 +2,10 @@
 n = 0:9;
 x_dt = cos(2*pi*n/10);
 y_dt = sin(2*pi*n/10);
-inner_dt = sum(x_dt .* conj(y_dt)); % Result: 0
+inner_dt = sum(x_dt .* conj(y_dt));
 
 % CT Inner Product
 t = 0:0.01:1;
 x_ct = sin(2*pi*t);
 y_ct = cos(2*pi*t);
-inner_ct = trapz(t, x_ct .* conj(y_ct)); % Result: ~0
+inner_ct = trapz(t, x_ct .* conj(y_ct));
