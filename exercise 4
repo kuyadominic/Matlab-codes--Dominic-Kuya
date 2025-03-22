@@ -1,0 +1,12 @@
+% Linearity Check (CT)
+t = 0:0.01:5;
+x1 = sin(2*pi*t); x2 = cos(2*pi*t);
+y1 = x1 + circshift(x1, 100); y2 = x2 + circshift(x2, 100);
+y3 = x1 + x2 + circshift(x1 + x2, 100);
+is_linear_ct = isequal(y1 + y2, y3);
+Causality
+x = np.random.rand(20)
+y = np.cumsum(x) 
+%Stability
+x_step = np.ones(1000)
+y_step = np.cumsum(x_step)
