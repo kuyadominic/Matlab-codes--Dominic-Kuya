@@ -1,0 +1,33 @@
+% CT Signals
+t = -5:0.01:5;
+sgn_t = sign(t);
+rect_t = rectangularPulse(-0.5, 0.5, t);
+
+% Triangular function
+tri_t = (1 - abs(t)) .* (abs(t) <= 1);
+
+% Sinc function (handling division by zero)
+sinc_t = sin(pi*t) ./ (pi*t);
+sinc_t(t == 0) = 1;
+
+% Plotting CT signals
+figure;
+subplot(2,2,1); plot(t, sgn_t); title('Signum Function'); grid on;
+subplot(2,2,2); plot(t, rect_t); title('Rectangular Function'); grid on;
+subplot(2,2,3); plot(t, tri_t); title('Triangular Function'); grid on;
+subplot(2,2,4); plot(t, sinc_t); title('Sinc Function'); grid on;
+
+% DT Signals
+n = -10:10;
+delta_n = (n == 0);
+u_n = (n >= 0);
+square_n = (n >= 0) & (n < 5);
+exp_n = exp(1j * pi * n / 5);
+cos_n = cos(pi * n / 5);
+
+% Plotting DT signals
+figure;
+subplot(2,2,1); stem(n, delta_n); title('Impulse Function'); grid on;
+subplot(2,2,2); stem(n, u_n); title('Step Function'); grid on;
+subplot(2,2,3); stem(n, square_n); title('Square Impulse'); grid on;
+subplot(2,2,4); stem(n, real(exp_n)); title('Discrete Exponential'); grid on;
